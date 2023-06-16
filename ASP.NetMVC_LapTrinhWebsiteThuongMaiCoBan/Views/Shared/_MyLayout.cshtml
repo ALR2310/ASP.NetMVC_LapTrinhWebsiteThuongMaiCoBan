@@ -1,0 +1,111 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - AL SHOP</title>
+    <link rel="stylesheet" href="~/css/base.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/reset.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/main.css" asp-append-version="true" />
+</head>
+
+<body>
+    <div class="app">
+        <header class="header">
+            <nav id="hd_nav" class="header__navbar">
+                <div class="header__navbar_content">
+                    <a asp-controller="Home" asp-action="Index" class="header__navbar_logo">Lê Thanh An</a>
+                    <div class="header__navbar_btn">
+                        <button href="" class="btn_app btn-register">Đăng Ký</button>
+                        <button href="" class="btn_app btn-login">Đăng Nhập</button>
+                    </div>
+                </div>
+            </nav>
+            <div id="hd_menu" class="header__menu">
+                <div class="header__menu_container">
+                    <ul class="header__menu_list">
+                        <li class="header__menu_list-item">
+                            <div class="header__menu_list_item-icon">
+                                <img src="~/img/icons/menu/phone.png" alt="">
+                            </div>
+                            <a href="@Url.Action("Index", "Product", new { categoryId = 6 })" class="header__menu_list-item-link">Điện Thoại</a>
+                        </li>
+                        <li class="header__menu_list-item">
+                            <div class="header__menu_list_item-icon">
+                                <img src="~/img/icons/menu/laptop.png" alt="">
+                            </div>
+                            <a href="@Url.Action("Index", "Product", new { categoryId = 2 })" class="header__menu_list-item-link">Laptop</a>
+                        </li>
+                        <li class="header__menu_list-item">
+                            <div class="header__menu_list_item-icon">
+                                <img src="~/img/icons/menu/computer.png" alt="">
+                            </div>
+                            <a href="@Url.Action("Index", "Product", new { categoryId = 3 })" class="header__menu_list-item-link">Máy Bàn</a>
+                        </li>
+                        <li class="header__menu_list-item">
+                            <div class="header__menu_list_item-icon">
+                                <img src="~/img/icons/menu/apple.png" alt="">
+                            </div>
+                            <a href="@Url.Action("Index", "Product", new { categoryId = 4 })" class="header__menu_list-item-link">Apple</a>
+                        </li>
+                        <li class="header__menu_list-item">
+                            <div class="header__menu_list_item-icon">
+                                <img src="~/img/icons/menu/accessory.png" alt="">
+                            </div>
+                            <a href="@Url.Action("Index", "Product", new { categoryId = 5 })" class="header__menu_list-item-link">Linh Kiện</a>
+                        </li>
+                        <li class="header__menu_list-item">
+                            <div class="header__menu_list_item-icon">
+                                <img src="~/img/icons/menu/product.png" alt="">
+                            </div>
+                            <a href="@Url.Action("Index", "Product")" class="header__menu_list-item-link">Tất Cả Sản Phẩm</a>
+                        </li>
+                    </ul>
+                    <div class="header__menu_searchbar">
+                        <form asp-action="Index" method="get" class="header__menu_searchbar_form">
+                            <input class="header__searchbar_text" type="text" name="search" placeholder="Nhập Nội Dung Cần Tìm" />
+                            <input class="header__searchbar_submit" type="submit" value="" />
+                            <ul class="header__menu_list">
+                                <li class="header__menu_list-item">
+                                    <div class="header__menu_list_item-icon product-right">
+                                        <img src="~/img/icons/menu/cart.png" alt="">
+                                    </div>
+                                    <a href="" class="header__menu_list-item-link btn-cart-product">Giỏ Hàng</a>
+                                </li>
+                            </ul>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- Đoạn script dùng để đặt position fixed cho khối div header__menu khi cuộn -->
+            <script>
+                var nav_menu = document.getElementById('hd_nav');
+                var search_menu = document.getElementById('hd_menu');
+
+                window.addEventListener('scroll', function () {
+                    if (window.pageYOffset > nav_menu.offsetHeight) {
+                        search_menu.style.position = 'fixed';
+                        search_menu.style.top = '0';
+                    } else {
+                        search_menu.style.position = 'relative';
+                    }
+                });
+            </script>
+        </header>
+
+        <main role="main" class="grid_container">
+            @RenderBody()
+        </main>
+
+        <footer>
+            <div class="footer_content">
+            </div>
+            <div class="footer_desc">
+                <div class="footer_description">Copyrights © 2023. All rights reserved by An Lê</div>
+            </div>
+        </footer>
+        @await RenderSectionAsync("Scripts", required: false)
+    </div>
+</body>
+
+</html>

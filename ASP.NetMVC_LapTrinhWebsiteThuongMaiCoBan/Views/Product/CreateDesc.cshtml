@@ -1,0 +1,165 @@
+﻿@{
+    ViewData["Title"] = "Thêm Mô Tả Sản Phẩm";
+}
+
+@model ProductAndDescViewModel
+
+<div class="container">
+    <div class="product_details">
+        <div class="product_details_header">
+            <div class="prc_d_image">
+                <img src="@Model.Product.ImgUrl" alt="">
+            </div>
+            <div class="prc_d_desc">
+                <div class="prc_d_desc_title">@Model.Product.Name</div>
+                <div class="prc_d_desc_price">
+                    <p class="prc_d_main_price">@Model.Product.Price.ToString("N0")₫</p>
+                    <div class="prc_d_sub_price">
+                        <p>Trả góp chỉ từ</p>
+                        <span>
+                            <strong>2.590.000₫</strong>
+                            /tháng
+                        </span>
+                    </div>
+                </div>
+                <div class="prc_d_btn">
+                    <button class="prc_d_btn-buy-now">
+                        <h2>MUA NGAY</h2>
+                        <p>Giao Hàng Miễn Phí Hoặc Nhận Tại Shop</p>
+                    </button>
+                    <div class="prc_d_btn-subbtn">
+                        <button class="prc_d_btn-installment">
+                            <h2>TRẢ GÓP 0%</h2>
+                            <p>Duyệt Nhanh Qua Điện Thoại</p>
+                        </button>
+                        <button class="prc_d_installment-card">
+                            <h2>Trả Góp Qua Thẻ</h2>
+                            <p>Visa, MasterCard, ATM, JCB, AMEX</p>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="product_details_body">
+            <div class="prc_d_body_desc">
+                <div class="prc_d_body_desc_container">
+                    <form asp-action="SaveProductDesc" method="post">
+                        <script src="https://code.jquery.com/jquery-3.6.4.min.js">
+                        </script>
+                        <div class="prc_d_body_desc_content">
+
+                            <div class="prc_d_body_desc_div_input">
+                                <div class="prc_d_body_desc_title">Thêm Mô Tả Chi Tiết Sản Phẩm #1</div>
+                                <div class="prc_d_body_desc_input desc-input-prc">
+                                    <input placeholder="Id Sản Phẩm" asp-for="@Model.ProductDesc.ProductId" readonly name="ProductId" type="hidden" class="prc_d_body_input">
+                                </div>
+                                <div class="prc_d_body_desc_input desc-input-title">
+                                    <input placeholder="Vui Lòng Nhập Tiêu Đề" name="Title" type="text" class="prc_d_body_input">
+                                </div>
+                                <div class="prc_d_body_desc_input desc-input-details">
+                                    <input placeholder="Vui Lòng Nhập Nội Dung" name="Details" type="text" class="prc_d_body_input">
+                                </div>
+                                <div class="prc_d_body_desc_input desc-input-image">
+                                    <input placeholder="Vui Lòng Nhập Địa Chỉ Hình Ảnh" name="ImgUrl" type="text" class="prc_d_body_input">
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="prc_addProductDescItem">
+                            <button type="button" class="btn_app addProductDescItem">Thêm Một Bảng Ghi Mới</button>
+                        </div>
+                        <div class="add_prc_btn_submit">
+                            <button type="submit" class="btn_app addPrc_Submit">Lưu Tất Cả - Cập Nhật Bảng Ghi</button>
+                        </div>
+                    </form>
+                    <script>
+                        $(document).ready(function () {
+                            var max_fields = 10; // số lượng khối div tối đa
+                            var wrapper = $(".prc_d_body_desc_content"); // chứa các khối div
+                            var add_button = $(".addProductDescItem"); // nút thêm khối div
+                            var x = 1;
+                            $(add_button).click(function (e) {
+                                e.preventDefault();
+                                if (x < max_fields) { // nếu chưa đạt số lượng tối đa
+                                    x++;
+                                    $(wrapper).append('<div class="prc_d_body_desc_div_input">' +
+                                        '<div class="prc_d_body_desc_title">Thêm Mô Tả Chi Tiết Sản Phẩm #' +
+                                        x + '</div>' +
+                                        '<div class="prc_d_body_desc_input desc-input-prc">' +
+                                        '<input placeholder="Id Sản Phẩm" value="@Model.ProductDesc.ProductId" type="hidden" readonly name="ProductId' +
+                                        x + '" type="text" class="prc_d_body_input">' +
+                                        '</div>' +
+                                        '<div class="prc_d_body_desc_input desc-input-title">' +
+                                        '<input placeholder="Vui Lòng Nhập Tiêu Đề" name="Title' +
+                                        x + '" type="text" class="prc_d_body_input">' +
+                                        '</div>' +
+                                        '<div class="prc_d_body_desc_input desc-input-details">' +
+                                        '<input placeholder="Vui Lòng Nhập Nội Dung" name="Details' +
+                                        x + '" type="text" class="prc_d_body_input">' +
+                                        '</div>' +
+                                        '<div class="prc_d_body_desc_input desc-input-image">' +
+                                        '<input placeholder="Vui Lòng Nhập Địa Chỉ Hình Ảnh" name="ImgUrl' +
+                                        x + '" type="text" class="prc_d_body_input">' +
+                                        '</div>' +
+                                        '</div>');
+                                }
+                            });
+                        });
+                    </script>
+
+                </div>
+            </div>
+
+            <div class="prc_d_body_config">
+                <div class="prc_d_b_cfg">
+                    <p class="prc_d_b_cfg_title">Thông Số Kỹ Thuật</p>
+                    <table class="prc_d_b_cfg_table">
+                        <tbody>
+                            <tr>
+                                <td>Màn hình</td>
+                                <td>@Html.DisplayFor(model => model.Product.Display)</td>
+                            </tr>
+                            <tr>
+                                <td>CPU</td>
+                                <td>@Html.DisplayFor(model => model.Product.CPU)</td>
+                            </tr>
+                            <tr>
+                                <td>RAM</td>
+                                <td>@Html.DisplayFor(model => model.Product.RAM)</td>
+                            </tr>
+                            <tr>
+                                <td>Ổ cứng</td>
+                                <td>@Html.DisplayFor(model => model.Product.HardDisk)</td>
+                            </tr>
+                            <tr>
+                                <td>Đồ họa</td>
+                                <td>@Html.DisplayFor(model => model.Product.GPU)</td>
+                            </tr>
+                            <tr>
+                                <td>Hệ điều hành</td>
+                                <td>@Html.DisplayFor(model => model.Product.OS)</td>
+                            </tr>
+                            <tr>
+                                <td>Trọng lượng</td>
+                                <td>@Html.DisplayFor(model => model.Product.Weight)</td>
+                            </tr>
+                            <tr>
+                                <td>Kích thước</td>
+                                <td>@Html.DisplayFor(model => model.Product.Size)</td>
+                            </tr>
+                            <tr>
+                                <td>Xuất xứ</td>
+                                <td>@Html.DisplayFor(model => model.Product.Origin)</td>
+                            </tr>
+                            <tr>
+                                <td>Năm ra mắt</td>
+                                <td>@Html.DisplayFor(model => model.Product.Debut)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

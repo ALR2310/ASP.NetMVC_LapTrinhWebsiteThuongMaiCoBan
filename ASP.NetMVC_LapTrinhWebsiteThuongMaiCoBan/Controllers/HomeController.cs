@@ -1,4 +1,5 @@
-﻿using ASP.NetMVC_LapTrinhWebsiteThuongMaiCoBan.Models;
+﻿using ASP.NetMVC_LapTrinhWebsiteThuongMaiCoBan.Data;
+using ASP.NetMVC_LapTrinhWebsiteThuongMaiCoBan.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -6,27 +7,47 @@ namespace ASP.NetMVC_LapTrinhWebsiteThuongMaiCoBan.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private readonly MyDbContext _context;
+        public HomeController(MyDbContext context)
         {
-            _logger = logger;
+            _context = context;
         }
 
-        public IActionResult Index()
+        #region Hiển thị sản phẩm lên view và lọc theo danh mục
+        public IActionResult Index(string search)
         {
-            return View();
-        }
+            // Lấy danh sách các danh mục sản phẩm
+            var categories = _context.ProductCategory.ToList();
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
+            // Tạo view model từ danh sách các danh mục sản phẩm
+            var model = categories.Select(c => new ProductCategorieViewModel
+            {
+                CategoryId = c.Id,
+                CategoryName = c.Name,
+                CategoryTitle = c.Title,
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+                // Truy vấn danh sách sản phẩm theo từng danh mục sản phẩm và tìm kiếm
+                Products = _context.Product.Where(p => p.CategoryId == c.Id && (string.IsNullOrEmpty(search) || p.Name.Contains(search)))
+                .Select(p => new ProductViewModel
+                {
+                    Id = p.Id,
+                    Name = p.Name,
+                    Price = p.Price,
+                    ImgUrl = p.ImgUrl,
+                    Display = p.Display,
+                    CPU = p.CPU,
+                    RAM = p.RAM,
+                    HardDisk = p.HardDisk,
+                    GPU = p.GPU,
+                    OS = p.OS,
+                    Weight = p.Weight,
+                    Size = p.Size,
+                    Origin = p.Origin,
+                    Debut = p.Debut
+                }).ToList()
+            }).ToList();
+            return View(model);
         }
+        #endregion
     }
 }

@@ -1,8 +1,400 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Trang Chủ";
 }
+@model List<ProductCategorieViewModel>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="menuleft">
+    <div class="menuleft_container">
+        <form id="filterForm" action="/Home/Index" method="get">
+            <div class="menuleft_phone">
+                <h1 class="menuleft_title">Điện Thoại</h1>
+
+                <h2 class="menuleft_sub_title">Hãng sản xuất</h2>
+
+                <div class="menuleft_input">
+                    <div class="menuleft_input_left">
+
+                        <div class="menuleft_checkbox">
+                            <input type="checkbox" id="checkbox_tatca" checked>
+                            <label for="checkbox_tatca">Tất Cả</label>
+                        </div>
+
+                        <div class="menuleft_checkbox">
+                            <input type="checkbox" id="checkbox_samsung">
+                            <label for="checkbox_samsung">Samsung</label>
+                        </div>
+
+                        <div class="menuleft_checkbox">
+                            <input type="checkbox" id="checkbox-Xiaomi">
+                            <label for="checkbox-Xiaomi">Xiaomi</label>
+                        </div>
+
+                        <div class="menuleft_checkbox">
+                            <input type="checkbox" id="checkbox-Vivo">
+                            <label for="checkbox-Vivo">Vivo</label>
+                        </div>
+
+                        <div class="menuleft_checkbox">
+                            <input type="checkbox" id="checkbox-Masstel">
+                            <label for="checkbox-Masstel">Masstel</label>
+                        </div>
+
+                    </div>
+
+                    <div class="menuleft_input_right">
+
+                        <div class="menuleft_checkbox">
+                            <input type="checkbox" id="checkbox-Iphone">
+                            <label for="checkbox-Iphone">Iphone</label>
+                        </div>
+
+                        <div class="menuleft_checkbox">
+                            <input type="checkbox" id="checkbox-OPPO">
+                            <label for="checkbox-OPPO">OPPO</label>
+                        </div>
+
+                        <div class="menuleft_checkbox">
+                            <input type="checkbox" id="checkbox-Realme">
+                            <label for="checkbox-Realme">Realme</label>
+                        </div>
+
+                        <div class="menuleft_checkbox">
+                            <input type="checkbox" id="checkbox-Asus">
+                            <label for="checkbox-Asus">Asus</label>
+                        </div>
+
+                        <div class="menuleft_checkbox">
+                            <input type="checkbox" id="checkbox-Nokia">
+                            <label for="checkbox-Nokia">Nokia</label>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <h2 class="menuleft_sub_title">Mức giá</h2>
+
+                <div class="menuleft_input">
+                    <div class="menuleft_input_content">
+
+                        <div class="menuleft_checkbox">
+                            <input type="checkbox" id="checkbox_tatcagia" checked>
+                            <label for="checkbox_tatcagia">Tất Cả</label>
+                        </div>
+
+                        <div class="menuleft_checkbox">
+                            <input type="checkbox" id="checkbox-gia1">
+                            <label for="checkbox-gia1">Dưới 2 triệu</label>
+                        </div>
+
+                        <div class="menuleft_checkbox">
+                            <input type="checkbox" id="checkbox-gia2">
+                            <label for="checkbox-gia2">Từ 2 - 4 triệu</label>
+                        </div>
+
+                        <div class="menuleft_checkbox">
+                            <input type="checkbox" id="checkbox-gia3">
+                            <label for="checkbox-gia3">Từ 4 - 7 triệu</label>
+                        </div>
+
+                        <div class="menuleft_checkbox">
+                            <input type="checkbox" id="checkbox-gia4">
+                            <label for="checkbox-gia4">Từ 7 - 13 triệu</label>
+                        </div>
+
+                        <div class="menuleft_checkbox">
+                            <input type="checkbox" id="checkbox-gia5">
+                            <label for="checkbox-gia5">Trên 13 triệu</label>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </form>
+
+
+        <div class="menuleft_laptop">
+            <h1 class="menuleft_title">Laptop</h1>
+            <h2 class="menuleft_sub_title">Hãng sản xuất</h2>
+
+            <div class="menuleft_input">
+                <div class="menuleft_input_left">
+
+                    <div class="menuleft_checkbox">
+                        <input type="checkbox" id="checkbox_lap_tatca" checked>
+                        <label for="checkbox_lap_tatca">Tất Cả</label>
+                    </div>
+
+                    <div class="menuleft_checkbox">
+                        <input type="checkbox" id="checkbox-lap_asus">
+                        <label for="checkbox-lap_asus">Asus</label>
+                    </div>
+
+                    <div class="menuleft_checkbox">
+                        <input type="checkbox" id="checkbox-lap_Lenovo">
+                        <label for="checkbox-lap_Lenovo">Lenovo</label>
+                    </div>
+
+                    <div class="menuleft_checkbox">
+                        <input type="checkbox" id="checkbox-lap_gigabyte">
+                        <label for="checkbox-lap_gigabyte">Gigabyte</label>
+                    </div>
+
+                    <div class="menuleft_checkbox">
+                        <input type="checkbox" id="checkbox-lap_Acer">
+                        <label for="checkbox-lap_Acer">Acer</label>
+                    </div>
+
+                    <div class="menuleft_checkbox">
+                        <input type="checkbox" id="checkbox-lap_surface">
+                        <label for="checkbox-lap_surface">Surface</label>
+                    </div>
+
+                </div>
+
+                <div class="menuleft_input_right">
+
+                    <div class="menuleft_checkbox">
+                        <input type="checkbox" id="checkbox-lap_mac">
+                        <label for="checkbox-lap_mac">Macbook</label>
+                    </div>
+
+                    <div class="menuleft_checkbox">
+                        <input type="checkbox" id="checkbox-lap_hp">
+                        <label for="checkbox-lap_hp">HP</label>
+                    </div>
+
+                    <div class="menuleft_checkbox">
+                        <input type="checkbox" id="checkbox-lap_msi">
+                        <label for="checkbox-lap_msi">MSI</label>
+                    </div>
+
+                    <div class="menuleft_checkbox">
+                        <input type="checkbox" id="checkbox-lap_Dell">
+                        <label for="checkbox-lap_Dell">Dell</label>
+                    </div>
+
+                    <div class="menuleft_checkbox">
+                        <input type="checkbox" id="checkbox-lap_masstel">
+                        <label for="checkbox-lap_masstel">Masstel</label>
+                    </div>
+
+                    <div class="menuleft_checkbox">
+                        <input type="checkbox" id="checkbox-lap_chuwi">
+                        <label for="checkbox-lap_chuwi">Chuwi</label>
+                    </div>
+
+                </div>
+            </div>
+
+            <h2 class="menuleft_sub_title">Mức giá</h2>
+
+            <div class="menuleft_input">
+                <div class="menuleft_input_content">
+
+                    <div class="menuleft_checkbox">
+                        <input type="checkbox" id="checkbox_lap_tatcagia" checked>
+                        <label for="checkbox_lap_tatcagia">Tất Cả</label>
+                    </div>
+
+                    <div class="menuleft_checkbox">
+                        <input type="checkbox" id="checkbox-lap_gia1">
+                        <label for="checkbox-lap_gia1">Dưới 10 triệu</label>
+                    </div>
+
+                    <div class="menuleft_checkbox">
+                        <input type="checkbox" id="checkbox-lap_gia2">
+                        <label for="checkbox-lap_gia2">Từ 10 - 15 triệu</label>
+                    </div>
+
+                    <div class="menuleft_checkbox">
+                        <input type="checkbox" id="checkbox-lap_gia3">
+                        <label for="checkbox-lap_gia3">Từ 15 - 20 triệu</label>
+                    </div>
+
+                    <div class="menuleft_checkbox">
+                        <input type="checkbox" id="checkbox-lap_gia4">
+                        <label for="checkbox-lap_gia4">Từ 20 - 25 triệu</label>
+                    </div>
+
+                    <div class="menuleft_checkbox">
+                        <input type="checkbox" id="checkbox-lap_gia5">
+                        <label for="checkbox-lap_gia5">Trên 25 triệu</label>
+                    </div>
+                </div>
+            </div>
+            <script src="~/js/ml_lap.js"></script>
+        </div>
+
+        <div class="menuleft_pc">
+            <h1 class="menuleft_title">Máy Bàn</h1>
+
+            <h2 class="menuleft_sub_title">Hãng sản xuất</h2>
+            <div class="menuleft_input">
+                <div class="menuleft_input_left">
+                    <div class="menuleft_checkbox">
+                        <input type="checkbox" id="checkbox_pc_tatca" checked>
+                        <label for="checkbox_pc_tatca">Tất Cả</label>
+                    </div>
+                    <div class="menuleft_checkbox">
+                        <input type="checkbox" id="checkbox-pc_epower">
+                        <label for="checkbox-pc_epower">E-Power</label>
+                    </div>
+                    <div class="menuleft_checkbox">
+                        <input type="checkbox" id="checkbox-pc_imac">
+                        <label for="checkbox-pc_imac">iMac</label>
+                    </div>
+                    <div class="menuleft_checkbox">
+                        <input type="checkbox" id="checkbox-pc_Macmini">
+                        <label for="checkbox-pc_Macmini">Mac Mini</label>
+                    </div>
+                </div>
+
+                <div class="menuleft_input_right">
+                    <div class="menuleft_checkbox">
+                        <input type="checkbox" id="checkbox-pc_lenovo">
+                        <label for="checkbox-pc_lenovo">Lenovo</label>
+                    </div>
+                    <div class="menuleft_checkbox">
+                        <input type="checkbox" id="checkbox-pc_hp">
+                        <label for="checkbox-pc_hp">HP</label>
+                    </div>
+                    <div class="menuleft_checkbox">
+                        <input type="checkbox" id="checkbox-pc_asus">
+                        <label for="checkbox-pc_asus">Asus</label>
+                    </div>
+                </div>
+            </div>
+
+            <h2 class="menuleft_sub_title">Nhu Cầu</h2>
+            <div class="menuleft_input">
+                <div class="menuleft_input_content">
+                    <div class="menuleft_checkbox">
+                        <input type="checkbox" id="checkbox_pc_nhucau_tatca" checked>
+                        <label for="checkbox_pc_nhucau_tatca">Tất Cả</label>
+                    </div>
+                    <div class="menuleft_checkbox">
+                        <input type="checkbox" id="checkbox-pc_nhucau1">
+                        <label for="checkbox-pc_nhucau1">Pc Gamming</label>
+                    </div>
+                    <div class="menuleft_checkbox">
+                        <input type="checkbox" id="checkbox-pc_nhucau2">
+                        <label for="checkbox-pc_nhucau2">Pc Đồ hoạ</label>
+                    </div>
+                    <div class="menuleft_checkbox">
+                        <input type="checkbox" id="checkbox-pc_nhucau3">
+                        <label for="checkbox-pc_nhucau3">Pc Văn phòng</label>
+                    </div>
+                </div>
+            </div>
+
+            <h2 class="menuleft_sub_title">Mức giá</h2>
+            <div class="menuleft_input">
+                <div class="menuleft_input_content">
+                    <div class="menuleft_checkbox">
+                        <input type="checkbox" id="checkbox_pc_tatcagia" checked>
+                        <label for="checkbox_pc_tatcagia">Tất Cả</label>
+                    </div>
+                    <div class="menuleft_checkbox">
+                        <input type="checkbox" id="checkbox-pc_gia1">
+                        <label for="checkbox-pc_gia1">Dưới 10 triệu</label>
+                    </div>
+                    <div class="menuleft_checkbox">
+                        <input type="checkbox" id="checkbox-pc_gia2">
+                        <label for="checkbox-pc_gia2">Từ 10 - 20 triệu</label>
+                    </div>
+                    <div class="menuleft_checkbox">
+                        <input type="checkbox" id="checkbox-pc_gia3">
+                        <label for="checkbox-pc_gia3">Từ 20 - 30 triệu</label>
+                    </div>
+                    <div class="menuleft_checkbox">
+                        <input type="checkbox" id="checkbox-pc_gia4">
+                        <label for="checkbox-pc_gia4">Từ 30 - 40 triệu</label>
+                    </div>
+                    <div class="menuleft_checkbox">
+                        <input type="checkbox" id="checkbox-pc_gia5">
+                        <label for="checkbox-pc_gia5">Từ 40 - 50 triệu</label>
+                    </div>
+                    <div class="menuleft_checkbox">
+                        <input type="checkbox" id="checkbox-pc_gia6">
+                        <label for="checkbox-pc_gia6">Trên 50 triệu</label>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <script src="~/js/ml_lap.js"></script>
+        <script src="~/js/ml_pc.js"></script>
+        <script src="~/js/ml_dt.js"></script>
+    </div>
+</div>
+
+<div class="container">
+    @foreach (var category in Model)
+    {
+        <h3 class="product_home_title">@category.CategoryTitle</h3>
+
+        <div class="product-home_list">
+            @foreach (var product in category.Products)
+            {
+                <div class="proc-h-list_item">
+                    <div class="proc-h-l_item_img">
+                        <a asp-controller="Product" asp-action="Details" asp-route-id="@product.Id" class="product-home_list-link">
+                            <img src="@product.ImgUrl" alt="" class="proc-h-l_item_img-link">
+                        </a>
+                    </div>
+                    <div class="proc-h-list_item-desc">
+                        <div class="proc-h-list_item-desc_title">
+                            <a asp-controller="Product" asp-action="Details" asp-route-id="@product.Id" class="product-home_list-link">@product.Name</a>
+                        </div>
+                        <div class="proc-h-list_item-desc_list">
+                            <ul class="proc-h-list_item-desc_list_ul">
+                                <li class="proc-h-list_item-desc_list_item">
+                                    <img src="~/img/icons/pc-desc/display.png" class="proc-list_item-config_icon">
+                                    <span class="proc-list_item-config_title">
+                                        @product.Display
+                                    </span>
+                                </li>
+                                <li class="proc-h-list_item-desc_list_item">
+                                    <img src="~/img/icons/pc-desc/cpu.png" class="proc-list_item-config_icon" />
+                                    <span class="proc-list_item-config_title">
+                                        @product.CPU
+                                    </span>
+                                </li>
+                                <li class="proc-h-list_item-desc_list_item">
+                                    <img src="~/img/icons/pc-desc/ram.png" class="proc-list_item-config_icon" />
+                                    <span class="proc-list_item-config_title">
+                                        @product.RAM
+                                    </span>
+                                </li>
+                                <li class="proc-h-list_item-desc_list_item">
+                                    <img src="~/img/icons/pc-desc/gpu.png" class="proc-list_item-config_icon" />
+                                    <span class="proc-list_item-config_title">
+                                        @product.GPU
+                                    </span>
+                                </li>
+                                <li class="proc-h-list_item-desc_list_item">
+                                    <img src="~/img/icons/pc-desc/ssd.png" class="proc-list_item-config_icon" />
+                                    <span class="proc-list_item-config_title">
+                                        @product.HardDisk
+                                    </span>
+                                </li>
+                                <li class="proc-h-list_item-desc_list_item">
+                                    <img src="~/img/icons/pc-desc/weight.png" class="proc-list_item-config_icon" />
+                                    <span class="proc-list_item-config_title">
+                                        @product.Weight
+                                    </span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="proc-h-list_item-desc_price">
+                            <h4 class="proc-h-list_item-desc_price-text">@product.Price.ToString("N0")đ</h4>
+                            <button class="proc-h-l_item-desc_buy">Mua Ngay</button>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+
 </div>

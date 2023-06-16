@@ -1,0 +1,44 @@
+﻿@{
+    ViewData["Title"] = "Quản Lý Sản Phẩm";
+}
+
+@model IEnumerable<Product>
+
+<div class="container">
+    <h3 class="product_home_title">Quản Lý Sản Phẩm</h3>
+    <a asp-action="Create" class="produc_home_addproduct">Thêm Sản Phẩm Mới</a>
+    <div class="product-home_list">
+        @foreach (var item in Model)
+        {
+            <div class="prdc_dtl_list_item">
+                <a asp-action="Details" asp-route-id="@item.Id">
+                    <div class="prdc_dtl_list_item-img">
+                        <img src="@item.ImgUrl" alt="" class="prdc_dtl_list_item-img--link">
+                    </div>
+                </a>
+
+                <div class="prdc_dtl_list_item-dscrp">
+                    <a asp-action="Details" asp-route-id="@item.Id" class="prdc_dtl_list_item-dscrip-title">@item.Name</a>
+                    <div class="prdc_dtl_list_item-dscrip-details">
+                        <ul class="prdc_dtl_list_item-dscrip-ul">
+                            <li class="prdc_dtl_list_item-dscrip-li">@item.Display</li>
+                            <li class="prdc_dtl_list_item-dscrip-li">@item.CPU</li>
+                            <li class="prdc_dtl_list_item-dscrip-li">@item.RAM</li>
+                            <li class="prdc_dtl_list_item-dscrip-li">@item.GPU</li>
+                            <li class="prdc_dtl_list_item-dscrip-li">@item.HardDisk</li>
+                        </ul>
+                    </div>
+                    <div class="prdc_dtl_list_item-dscrip-sub">
+                        <div class="prdc_dtl_list_item-dscrip-price">@item.Price.ToString("N0")đ</div>
+                        <div class="prdc_dtl_list_item-dscrip-subitem">
+                            <a asp-action="CreateDesc" asp-route-id="@item.Id" class="prdc_dtl_list_item-dscrip-subitem-link">Thêm Mô Tả</a>
+                            <a asp-action="Edit" asp-route-id="@item.Id" class="prdc_dtl_list_item-dscrip-subitem-link">Sửa</a>
+                            <a asp-action="Details" asp-route-id="@item.Id" class="prdc_dtl_list_item-dscrip-subitem-link">Chi Tiết</a>
+                            <a asp-action="Delete" asp-route-id="@item.Id" class="prdc_dtl_list_item-dscrip-subitem-link">Xoá</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

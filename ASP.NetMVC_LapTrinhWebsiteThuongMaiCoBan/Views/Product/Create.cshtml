@@ -1,0 +1,103 @@
+﻿@model Product
+
+@{
+    ViewData["Title"] = "Thêm Sản Phẩm";
+}
+
+<div class="container">
+    <div class="addproduct">
+        <h3 class="addproduct_title">Thêm Sản Phẩm Mới</h3>
+        <form asp-action="Create">
+            <div class="addproduct_container">
+
+                <div class="addprc_c_header">
+
+                    <div class="addprc_c_title">
+                        <div class="addprc_c_input">
+                            <div class="del_prc_title addprc_c_input_n">
+                                <input placeholder="Nhập Tên Sản Phẩm" asp-for="Name" class="addprc_c_input_name" type="text">
+                                <span asp-validation-for="Name" class="text-danger"></span>
+                            </div>
+                            <select asp-for="CategoryId" asp-items="ViewBag.CategoryId" class="addprc_c_input_select"></select>
+                        </div>
+                        <div class="addprc_c_input">
+                            <div class="del_prc_title" style="margin-left: 5%; display: flex; flex-direction: column">
+                                <input placeholder="Nhập Giá Bán" asp-for="Price" type="text" onchange="removeDecimal(this)" style="width: 95%" />
+                                <span asp-validation-for="Price" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <script>
+                            function removeDecimal(input) {
+                                input.value = input.value.replace(/\./g, '');
+                            }
+                        </script>
+                        <div class="addprc_c_input">
+                            <input placeholder="Nhập Đường Dẫn Ảnh" asp-for="ImgUrl" type="url" id="addprc_c_img-input">
+                            <span asp-validation-for="ImgUrl" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="addprc_c_image">
+                        <img id="addprc_c_img-link" src="" alt="">
+                    </div>
+                    <script>
+                        const inputElement = document.getElementById("addprc_c_img-input");
+                        const previewElement = document.getElementById("addprc_c_img-link");
+
+                        inputElement.addEventListener("input", function () {
+                            const imageUrl = this.value;
+                            previewElement.src = imageUrl;
+                        });
+                    </script>
+
+                </div>
+
+                <div class="addprc_c_desc">
+                    <div class="addprc_c_input">
+                        <input placeholder="Chi Tiết Màn Hình" asp-for="Display" type="text">
+                    </div>
+                    <div class="addprc_c_input">
+                        <input placeholder="Cấu Hình Cpu" asp-for="CPU" type="text">
+                    </div>
+                    <div class="addprc_c_input">
+                        <input placeholder="Dung Lượng Ram" asp-for="RAM" type="text">
+                    </div>
+                    <div class="addprc_c_input">
+                        <input placeholder="Dung Lượng Bộ Nhớ" asp-for="HardDisk" type="text">
+                    </div>
+                    <div class="addprc_c_input">
+                        <input placeholder="Card Đồ Hoạ" asp-for="GPU" type="text">
+                    </div>
+                    <div class="addprc_c_input">
+                        <input placeholder="Hệ Điều Hành" asp-for="OS" type="text">
+                    </div>
+                    <div class="addprc_c_input">
+                        <input placeholder="Trọng Lượng Sản Phẩm" asp-for="Weight" type="text">
+                    </div>
+                    <div class="addprc_c_input">
+                        <input placeholder="Kích Thước Sản Phẩm" asp-for="Size" type="text">
+                    </div>
+                    <div class="addprc_c_input">
+                        <input placeholder="Xuất Sứ Sản Phẩm" asp-for="Origin" type="text">
+                    </div>
+                    <div class="addprc_c_input">
+                        <input placeholder="Năm Ra Mắt" asp-for="Debut" type="text">
+                    </div>
+                    <div class="addprc_c_input">
+                        <div class="addprc_c_btn_subbtn">
+                            <input type="submit" class="addprc_c_input_subbtn--submit" value="Thêm Sản Phẩm">
+                            <a href="@Url.Action("Index", "Product")" class="addprc_c_input_subbtn--back">Huỷ Bỏ</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

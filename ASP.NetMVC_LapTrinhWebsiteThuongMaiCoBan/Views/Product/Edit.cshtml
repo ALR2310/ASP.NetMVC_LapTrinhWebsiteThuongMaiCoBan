@@ -1,0 +1,92 @@
+﻿@model Product
+
+@{
+    ViewData["Title"] = "Chỉnh Sửa";
+}
+
+<div class="container">
+    <div class="addproduct">
+        <h3 class="addproduct_title">Chỉnh Sửa - Cập Nhật Sản Phẩm</h3>
+        <form asp-action="Edit">
+            <div class="addproduct_container">
+
+                <div class="addprc_c_header">
+
+                    <div class="addprc_c_title">
+                        <input type="hidden" asp-for="Id" />
+                        <div class="addprc_c_input">
+                            <input placeholder="Nhập Tên Sản Phẩm" asp-for="Name" class="addprc_c_input_name" type="text">
+                            <select asp-for="CategoryId" asp-items="ViewBag.CategoryId" class="addprc_c_input_select"></select>
+                        </div>
+                        <div class="addprc_c_input">
+                            <input placeholder="Nhập Giá Bán" asp-for="Price" type="number">
+                        </div>
+                        <div class="addprc_c_input">
+                            <input placeholder="Nhập Đường Dẫn Ảnh" asp-for="ImgUrl" type="url" id="addprc_c_img-input">
+                        </div>
+                    </div>
+
+                    <div class="addprc_c_image">
+                        <img id="addprc_c_img-link" src="" alt="">
+                    </div>
+                    <script>
+                        const inputElement = document.getElementById("addprc_c_img-input");
+                        const previewElement = document.getElementById("addprc_c_img-link");
+
+                        inputElement.addEventListener("input", function () {
+                            const imageUrl = this.value;
+                            previewElement.src = imageUrl;
+                        });
+                    </script>
+
+                </div>
+
+                <div class="addprc_c_desc">
+                    <div class="addprc_c_input">
+                        <input placeholder="Nhập Chi Tiết Màn Hình" asp-for="Display" type="text">
+                    </div>
+                    <div class="addprc_c_input">
+                        <input placeholder="Nhập Cấu Hình Cpu" asp-for="CPU" type="text">
+                    </div>
+                    <div class="addprc_c_input">
+                        <input placeholder="Nhập Dung Lượng Ram" asp-for="RAM" type="text">
+                    </div>
+                    <div class="addprc_c_input">
+                        <input placeholder="Nhập Dung Lượng Bộ Nhớ" asp-for="HardDisk" type="text">
+                    </div>
+                    <div class="addprc_c_input">
+                        <input placeholder="Nhập Card Đồ Hoạ" asp-for="GPU" type="text">
+                    </div>
+                    <div class="addprc_c_input">
+                        <input placeholder="Nhập Hệ Điều Hành" asp-for="OS" type="text">
+                    </div>
+                    <div class="addprc_c_input">
+                        <input placeholder="Nhập Trọng Lượng Sản Phẩm" asp-for="Weight" type="text">
+                    </div>
+                    <div class="addprc_c_input">
+                        <input placeholder="Nhập Kích Thước Sản Phẩm" asp-for="Size" type="text">
+                    </div>
+                    <div class="addprc_c_input">
+                        <input placeholder="Nhập Nguồn Gốc Sản Phẩm" asp-for="Origin" type="text">
+                    </div>
+                    <div class="addprc_c_input">
+                        <input placeholder="Nhập Năm Ra Mắt" asp-for="Debut" type="text">
+                    </div>
+                    <div class="addprc_c_input">
+                        <div class="addprc_c_btn_subbtn">
+                            <input type="submit" class="addprc_c_input_subbtn--submit" value="Cập Nhật Sản Phẩm">
+                            <a href="@Url.Action("Index", "Product")" class="addprc_c_input_subbtn--back">Huỷ Bỏ</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
